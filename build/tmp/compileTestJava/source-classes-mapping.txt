@@ -1,2 +1,0 @@
-com/roon/board/web/HelloControllerTest.java
- com.roon.board.web.HelloControllerTest

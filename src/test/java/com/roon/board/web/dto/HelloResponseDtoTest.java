@@ -2,7 +2,8 @@ package com.roon.board.web.dto;
 
 import org.junit.Test;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
+
 
 public class HelloResponseDtoTest {
     @Test
