@@ -1,5 +1,6 @@
 package com.roon.board.web;
 
+import com.roon.board.config.auth.dto.SessionUser;
 import com.roon.board.service.PostsService;
 import com.roon.board.web.dto.PostsResponseDto;
 import lombok.RequiredArgsConstructor;
@@ -8,15 +9,29 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import javax.servlet.http.HttpSession;
+
 @RequiredArgsConstructor
 @Controller
 public class IndexController {
     private final PostsService postsService;
+    private final HttpSession httpSession;
+
+    // [javax.servlet.http public interface HttpSession]
+    //Provides a way to identify a user
+    // across more than one page request or visit to a Web site
+    // and to store information about that user.
+    //The servlet container uses this interface to create a session between an HTTP client and an HTTP server.
+    // The session persists for a specified time period,
+    // across more than one connection or page request from the user.
 
     //홈페이지
     @GetMapping("/")
     public String index(Model model){
         model.addAttribute("posts",postsService.findAllDesc());
+
+        SessionUser user =(SessionUser) httpSession.getAttribute("user");
+        if(user!=null) model.addAttribute("userName",user.getName());
         return "index";
     }
 
@@ -32,4 +47,6 @@ public class IndexController {
 
         return "posts-update";
     }
+
+
 }
