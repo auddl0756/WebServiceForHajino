@@ -2,12 +2,17 @@ package com.roon.board.service;
 
 import com.roon.board.domain.posts.Posts;
 import com.roon.board.domain.posts.PostsRepository;
+import com.roon.board.web.dto.PostsListResponseDto;
 import com.roon.board.web.dto.PostsResponseDto;
 import com.roon.board.web.dto.PostsSaveRequestDto;
 import com.roon.board.web.dto.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -33,5 +38,19 @@ public class PostsService {
     public PostsResponseDto findById(Long id){
         Posts post = repository.findById(id).orElseThrow(()->new IllegalArgumentException("id ="+id+"인 게시물 없음"));
         return new PostsResponseDto(post);
+    }
+
+    @Transactional(readOnly = true)
+    public List<PostsListResponseDto> findAllDesc(){
+        return repository.findAllDesc().stream()
+                .map(PostsListResponseDto::new)
+                .collect(Collectors.toList());
+    }
+
+    @Transactional
+    public void delete(Long id){
+        Posts post = repository.findById(id).orElseThrow(()->new IllegalArgumentException("id="+id+"인 게시글 없음"));
+        repository.delete(post);
+
     }
 }

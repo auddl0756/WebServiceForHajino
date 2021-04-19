@@ -8,12 +8,12 @@ public class PostsResponseDto {
     private Long id;
     private String title;
     private String content;
-    private String ahthor;
+    private String author;
 
     public PostsResponseDto(Posts entity){
         this.id=entity.getId();
         this.title=entity.getTitle();
         this.content= entity.getContent();
-        this.ahthor=entity.getAuthor();
+        this.author =entity.getAuthor();
     }
 }

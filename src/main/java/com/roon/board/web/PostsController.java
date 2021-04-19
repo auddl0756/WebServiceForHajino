@@ -6,6 +6,7 @@ import com.roon.board.web.dto.PostsSaveRequestDto;
 import com.roon.board.web.dto.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
@@ -29,4 +30,11 @@ public class PostsController {
     public PostsResponseDto findById(@PathVariable Long id){
         return service.findById(id);
     }
+
+    @DeleteMapping("/api/v1/posts/{id}")
+    public Long delete(@PathVariable Long id){
+        service.delete(id);
+        return id;
+    }
+
 }
