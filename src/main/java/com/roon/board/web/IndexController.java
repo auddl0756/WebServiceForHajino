@@ -1,5 +1,6 @@
 package com.roon.board.web;
 
+import com.roon.board.config.auth.LoginUser;
 import com.roon.board.config.auth.dto.SessionUser;
 import com.roon.board.service.PostsService;
 import com.roon.board.web.dto.PostsResponseDto;
@@ -26,11 +27,18 @@ public class IndexController {
     // across more than one connection or page request from the user.
 
     //홈페이지
-    @GetMapping("/")
-    public String index(Model model){
-        model.addAttribute("posts",postsService.findAllDesc());
+//    @GetMapping("/")
+//    public String index(Model model){
+//        model.addAttribute("posts",postsService.findAllDesc());
+//
+//        SessionUser user =(SessionUser) httpSession.getAttribute("user");
+//        if(user!=null) model.addAttribute("userName",user.getName());
+//        return "index";
+//    }
 
-        SessionUser user =(SessionUser) httpSession.getAttribute("user");
+    @GetMapping("/")
+    public String index(Model model, @LoginUser SessionUser user){
+        model.addAttribute("posts",postsService.findAllDesc());
         if(user!=null) model.addAttribute("userName",user.getName());
         return "index";
     }
