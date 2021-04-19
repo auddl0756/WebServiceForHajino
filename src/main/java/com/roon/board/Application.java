@@ -2,6 +2,7 @@ package com.roon.board;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 //@SpringBootApplication
 //Indicates a configuration class that declares one or more @Bean methods
@@ -11,6 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 // @EnableAutoConfiguration and
 // @ComponentScan.
 
+@EnableJpaAuditing    //Annotation to enable auditing in JPA via annotation configuration
 @SpringBootApplication
 public class Application {
     public static void main(String[] args) {
