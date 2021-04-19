@@ -18,6 +18,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        //public final class HttpSecurity
+        //extends org.springframework.security.config.annotation.AbstractConfiguredSecurityBuilder<org.springframework.security.web.DefaultSecurityFilterChain, HttpSecurity>
+        //implements org.springframework.security.config.annotation.SecurityBuilder<org
+        // .springframework.security.web.DefaultSecurityFilterChain>, org.springframework.security
+        // .config.annotation.web.HttpSecurityBuilder<HttpSecurity>
+
+        //It allows configuring web based security for specific http requests.
+        //By default it will be applied to all requests, but can be restricted
+        // using requestMatcher(RequestMatcher) or other similar methods.
+
         http.csrf().disable()
                 .headers().frameOptions().disable()
                 .and()
