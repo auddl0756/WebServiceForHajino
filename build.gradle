@@ -50,8 +50,11 @@ dependencies {
 
     //spring-session-jdbc
     compile('org.springframework.session:spring-session-jdbc')
+
+    //spring-security test
+    testCompile("org.springframework.security:spring-security-test")
 }
 
-test {
-    useJUnitPlatform()
-}
+//test {
+//    useJUnitPlatform()
+//}

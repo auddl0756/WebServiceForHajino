@@ -12,7 +12,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 // @EnableAutoConfiguration and
 // @ComponentScan.
 
-@EnableJpaAuditing    //Annotation to enable auditing in JPA via annotation configuration
+//@EnableJpaAuditing    //Annotation to enable auditing in JPA via annotation configuration
 @SpringBootApplication
 public class Application {
     public static void main(String[] args) {
