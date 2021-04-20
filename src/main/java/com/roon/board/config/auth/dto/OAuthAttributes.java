@@ -57,7 +57,8 @@ public class OAuthAttributes {
                 .name(name)
                 .email(email)
                 .picture(picture)
-                .role(Role.GUEST)
+                //.role(Role.GUEST)
+                .role(Role.USER)    //글 등록이 안 되서 수정
                 .build();
     }
 }
