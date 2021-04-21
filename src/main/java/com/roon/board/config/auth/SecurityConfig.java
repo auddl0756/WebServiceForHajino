@@ -29,21 +29,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         //By default it will be applied to all requests, but can be restricted
         // using requestMatcher(RequestMatcher) or other similar methods.
 
-        http.csrf().disable()
-                .headers().frameOptions().disable()
-                .and()
-                //Allows restricting access based upon the HttpServletRequest
-                .authorizeRequests()
-                .antMatchers("/","/css/**","/images/","/js/**","/h2-console/**").permitAll()
-                .antMatchers("/posts/save").permitAll()
-                .antMatchers("/api/v1/**").hasRole(Role.USER.getTitle())
-                .anyRequest().authenticated()   //Specify that URLs are allowed by any authenticated user.
-                .and()
-                .logout()   //Provides logout support. This is automatically applied when using WebSecurityConfigurerAdapter.
-                .logoutSuccessUrl("/")      //The URL to redirect to after logout has occurred.
-                .and()
-                .oauth2Login()  //Configures authentication support using an OAuth 2.0
-                .userInfoEndpoint()
-                .userService(customOAuth2UserService);
+//        http.csrf().disable()
+//                .headers().frameOptions().disable()
+//                .and()
+//                //Allows restricting access based upon the HttpServletRequest
+//                .authorizeRequests()
+//                .antMatchers("/","/css/**","/images/","/js/**","/h2-console/**").permitAll()
+//                .antMatchers("/posts/save").permitAll()
+//                .antMatchers("/api/v1/**").hasRole(Role.USER.getTitle())
+//                .anyRequest().authenticated()   //Specify that URLs are allowed by any authenticated user.
+//                .and()
+//                .logout()   //Provides logout support. This is automatically applied when using WebSecurityConfigurerAdapter.
+//                .logoutSuccessUrl("/")      //The URL to redirect to after logout has occurred.
+//                .and()
+//                .oauth2Login()  //Configures authentication support using an OAuth 2.0
+//                .userInfoEndpoint()
+//                .userService(customOAuth2UserService);
+
+            http.authorizeRequests().antMatchers("/**").hasRole("USER").and().formLogin();
     }
 }
