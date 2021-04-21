@@ -2,6 +2,7 @@ package com.roon.board.config.auth;
 
 import com.roon.board.domain.user.Role;
 import lombok.RequiredArgsConstructor;
+import org.h2.engine.User;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -35,7 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/","/css/**","/images/","/js/**","/h2-console/**").permitAll()
                 .antMatchers("/posts/save").permitAll()
-                .antMatchers("/api/v1/**").permitAll()
+                .antMatchers("/api/v1/**").hasRole(Role.USER.name())
                 .anyRequest().authenticated()   //Specify that URLs are allowed by any authenticated user.
                 .and()
                 .logout()   //Provides logout support. This is automatically applied when using WebSecurityConfigurerAdapter.
