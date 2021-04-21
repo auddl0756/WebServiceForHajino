@@ -34,6 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //Allows restricting access based upon the HttpServletRequest
                 .authorizeRequests()
                 .antMatchers("/","/css/**","/images/","/js/**","/h2-console/**").permitAll()
+                .antMatchers("/posts/save").permitAll()
                 .antMatchers("/api/v1/**").hasRole(Role.USER.name())
                 .anyRequest().authenticated()   //Specify that URLs are allowed by any authenticated user.
                 .and()
