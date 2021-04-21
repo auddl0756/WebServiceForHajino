@@ -36,7 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/","/css/**","/images/","/js/**","/h2-console/**").permitAll()
                 .antMatchers("/posts/save").permitAll()
-                .antMatchers("/api/v1/**").hasRole(Role.USER.name())
+                .antMatchers("/api/v1/**").hasRole(Role.USER.getTitle())
                 .anyRequest().authenticated()   //Specify that URLs are allowed by any authenticated user.
                 .and()
                 .logout()   //Provides logout support. This is automatically applied when using WebSecurityConfigurerAdapter.
