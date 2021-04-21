@@ -48,8 +48,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
             //http.authorizeRequests().antMatchers("/**").hasRole("USER").and().formLogin();
         http.csrf().disable()
+                .headers().frameOptions().disable()
+                .and()
                 .authorizeRequests()
-                .antMatchers("/","/css/**","/images/","/js/**","/h2-console/**").permitAll()
-                .anyRequest().hasRole("USER");
+//                .antMatchers("/","/css/**","/images/","/js/**","/h2-console/**").permitAll()
+//                .anyRequest().authenticated()
+                .antMatchers("*").permitAll()
+                .and()
+                .logout().logoutSuccessUrl("/")
+                .and()
+                .oauth2Login()
+                .userInfoEndpoint()
+                .userService(customOAuth2UserService);
     }
 }
