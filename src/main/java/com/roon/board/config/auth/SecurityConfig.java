@@ -46,6 +46,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .userInfoEndpoint()
 //                .userService(customOAuth2UserService);
 
-            http.authorizeRequests().antMatchers("/**").hasRole("USER").and().formLogin();
+            //http.authorizeRequests().antMatchers("/**").hasRole("USER").and().formLogin();
+        http.csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/","/css/**","/images/","/js/**","/h2-console/**").permitAll()
+                .anyRequest().hasRole("USER");
     }
 }
