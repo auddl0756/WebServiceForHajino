@@ -29,36 +29,35 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         //By default it will be applied to all requests, but can be restricted
         // using requestMatcher(RequestMatcher) or other similar methods.
 
+
 //        http.csrf().disable()
 //                .headers().frameOptions().disable()
 //                .and()
-//                //Allows restricting access based upon the HttpServletRequest
 //                .authorizeRequests()
-//                .antMatchers("/","/css/**","/images/","/js/**","/h2-console/**").permitAll()
-//                .antMatchers("/posts/save").permitAll()
-//                .antMatchers("/api/v1/**").hasRole(Role.USER.getTitle())
-//                .anyRequest().authenticated()   //Specify that URLs are allowed by any authenticated user.
+////                .antMatchers("/","/css/**","/images/","/js/**","/h2-console/**").permitAll()
+////                .anyRequest().authenticated()
+//                .antMatchers("*").permitAll()
 //                .and()
-//                .logout()   //Provides logout support. This is automatically applied when using WebSecurityConfigurerAdapter.
-//                .logoutSuccessUrl("/")      //The URL to redirect to after logout has occurred.
+//                .logout().logoutSuccessUrl("/")
 //                .and()
-//                .oauth2Login()  //Configures authentication support using an OAuth 2.0
+//                .oauth2Login()
 //                .userInfoEndpoint()
 //                .userService(customOAuth2UserService);
 
-            //http.authorizeRequests().antMatchers("/**").hasRole("USER").and().formLogin();
-        http.csrf().disable()
-                .headers().frameOptions().disable()
+        http.csrf().disable();
+        http.headers().frameOptions().disable();
+
+        http.authorizeRequests()
+                .antMatchers("/**")
+                .permitAll()
                 .and()
-                .authorizeRequests()
-//                .antMatchers("/","/css/**","/images/","/js/**","/h2-console/**").permitAll()
-//                .anyRequest().authenticated()
-                .antMatchers("*").permitAll()
-                .and()
-                .logout().logoutSuccessUrl("/")
+                .logout()
+                .logoutSuccessUrl("/")
                 .and()
                 .oauth2Login()
                 .userInfoEndpoint()
                 .userService(customOAuth2UserService);
+
+
     }
 }
