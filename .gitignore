@@ -1,7 +1,6 @@
 # Project exclude paths
 /.gradle/
 .idea
-/src/main/resources/static/*
 
 #로그인 클라이언트 id,secret 제외
 
