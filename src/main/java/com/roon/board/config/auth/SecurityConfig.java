@@ -64,7 +64,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.headers().frameOptions().disable();
         http
                 .authorizeRequests()
-                .antMatchers("/").permitAll()
+                .antMatchers("/","/css/**","/images/**","/js/**").permitAll()
                 .antMatchers("/api/v1/**")
                 .hasRole(Role.USER.name())
                 .anyRequest().authenticated()
@@ -75,6 +75,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .oauth2Login()
                     .userInfoEndpoint()
                     .userService(customOAuth2UserService);
+
 
     }
 }
