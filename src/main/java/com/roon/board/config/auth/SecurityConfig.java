@@ -17,8 +17,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final CustomOAuth2UserService customOAuth2UserService;
 
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
         //public final class HttpSecurity
         //extends org.springframework.security.config.annotation.AbstractConfiguredSecurityBuilder<org.springframework.security.web.DefaultSecurityFilterChain, HttpSecurity>
         //implements org.springframework.security.config.annotation.SecurityBuilder<org
@@ -44,7 +44,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .userInfoEndpoint()
 //                .userService(customOAuth2UserService);
 
-        /*http.csrf().disable();
+        http.csrf().disable();
         http.headers().frameOptions().disable();
 
         http.authorizeRequests()
@@ -56,7 +56,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .oauth2Login()
                 .userInfoEndpoint()
-                .userService(customOAuth2UserService);*/
+                .userService(customOAuth2UserService);
 
 //        http.csrf().disable().headers().frameOptions().disable()
 //                .and().authorizeRequests()
@@ -67,5 +67,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .and().oauth2Login().userInfoEndpoint().userService(customOAuth2UserService);
 
 
-    //}
+    }
 }
