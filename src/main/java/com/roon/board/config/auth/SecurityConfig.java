@@ -44,7 +44,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .userInfoEndpoint()
 //                .userService(customOAuth2UserService);
 
-        http.csrf().disable();
+        /*http.csrf().disable();
         http.headers().frameOptions().disable();
 
         http.authorizeRequests()
@@ -56,7 +56,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .oauth2Login()
                 .userInfoEndpoint()
-                .userService(customOAuth2UserService);
+                .userService(customOAuth2UserService);*/
+
+        http.csrf().disable().headers().frameOptions().disable()
+                .and().authorizeRequests()
+                .antMatchers("/", "/css/**", "/images/**","/js/**","/h2-console/**","/profile").permitAll()
+                .antMatchers("/api/v1/**").hasRole(Role.USER.name())
+                .anyRequest().authenticated()
+                .and().logout().logoutSuccessUrl("/")
+                .and().oauth2Login().userInfoEndpoint().userService(customOAuth2UserService);
 
 
     }
