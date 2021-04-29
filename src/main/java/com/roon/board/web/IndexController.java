@@ -57,4 +57,14 @@ public class IndexController {
     }
 
 
+    // 추가 : 로그인 안 해도 글 읽기는 가능하도록 하기 위해
+    // 그리고 글 수정과 글 보기를 분리하기 위해
+    @GetMapping("/posts/show/{id}")
+    public String postsShow(@PathVariable Long id,Model model){
+        PostsResponseDto dto = postsService.findById(id);
+        model.addAttribute("post",dto);
+
+        return "posts-show";
+    }
+
 }
