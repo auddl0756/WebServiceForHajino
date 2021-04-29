@@ -17,8 +17,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final CustomOAuth2UserService customOAuth2UserService;
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
+//    @Override
+//    protected void configure(HttpSecurity http) throws Exception {
         //public final class HttpSecurity
         //extends org.springframework.security.config.annotation.AbstractConfiguredSecurityBuilder<org.springframework.security.web.DefaultSecurityFilterChain, HttpSecurity>
         //implements org.springframework.security.config.annotation.SecurityBuilder<org
@@ -58,14 +58,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .userInfoEndpoint()
                 .userService(customOAuth2UserService);*/
 
-        http.csrf().disable().headers().frameOptions().disable()
-                .and().authorizeRequests()
-                .antMatchers("/", "/css/**", "/images/**","/js/**","/h2-console/**","/profile").permitAll()
-                .antMatchers("/api/v1/**").hasRole(Role.USER.name())
-                .anyRequest().authenticated()
-                .and().logout().logoutSuccessUrl("/")
-                .and().oauth2Login().userInfoEndpoint().userService(customOAuth2UserService);
+//        http.csrf().disable().headers().frameOptions().disable()
+//                .and().authorizeRequests()
+//                .antMatchers("/", "/css/**", "/images/**","/js/**","/h2-console/**","/profile").permitAll()
+//                .antMatchers("/api/v1/**").hasRole(Role.USER.name())
+//                .anyRequest().authenticated()
+//                .and().logout().logoutSuccessUrl("/")
+//                .and().oauth2Login().userInfoEndpoint().userService(customOAuth2UserService);
 
 
-    }
+    //}
 }
