@@ -4,7 +4,7 @@ jdk:
 
 branches:
   only:
-    - master  # 마스터 브랜치가 푸시될 때만 travis ci가 동작하도록
+    - master   # 마스터 브랜치가 푸시될 때만 travis ci가 동작하도록
 
 cache:
   directories:
