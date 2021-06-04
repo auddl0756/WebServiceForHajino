@@ -17,3 +17,5 @@ notifications:  # Travis CI 완료 시 알람을 보내도록 설정
   email:
     recipients:
       - cjddl789123@naver.com
+
+
