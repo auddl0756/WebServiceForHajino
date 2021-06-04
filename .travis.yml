@@ -13,6 +13,9 @@ cache:
 
 script: "./gradlew clean build" # 마스터 브랜치로 푸시되었을 때 수행할 명령어
 
+before_install:
+  - chmod +x gradlew
+
 notifications:  # Travis CI 완료 시 알람을 보내도록 설정
   email:
     recipients:
